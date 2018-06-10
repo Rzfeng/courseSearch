@@ -1,0 +1,4 @@
+.separator |
+.import courseList.dat Courses
+
+
