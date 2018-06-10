@@ -1,2 +1,2 @@
-sqlite3 AuctionBase < create.sql
-sqlite3 AuctionBase < load.txt
+sqlite3 CourseBase < create.sql
+sqlite3 CourseBase < load.txt
