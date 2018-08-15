@@ -1,0 +1,50 @@
+{% extends "app_base.html" %}
+{% block content %}
+<h3> Search </h3> 
+
+<form method="POST" action="search" role="form" style="max-width:400px; width:100%">
+	{% if message is defined %}
+	<div class="alert alert-warning" role="alert">{{ message }}</div>
+	{% endif %}
+	<div class="alert alert-info">Anything not input will not be taken into account</div>
+	<div class="form-group">
+	  <label for="itemID">Subject</label>
+	  <input type="text" class="form-control" id="subject" name="subject" />
+	</div>
+	<div class="form-group">
+	  <label for="userID">CourseID</label>
+	  <input type="text" name="courseID" class="form-control" id="courseID" />
+	</div>
+
+	<div class="form-group">
+	  <label for="category">SectionID</label>
+	  <input type="text" name="sectionID" class="form-control" id="sectionID" />
+	</div>
+
+	<div class="form-group">
+	  <label for="category">Year</label>
+	  <input type="text" name="year" class="form-control" id="year" />
+	</div>
+
+	
+	<div><input type="submit" value="Start Searching!" class="btn btn-primary" /></div>
+</form>
+<h3>Result</h3>
+<ul>
+{% if search_result %}
+{% for result in search_result %}
+	{% for key in result %}
+		<div>
+			<span>{{ key|e }}</span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span>{{ result[key]|e }}</span>
+		</div>
+  	{% endfor %}
+  	<div>--------</div>
+{% endfor %}
+{% else %}
+<div>No results</div>
+{% endif %}
+</ul>
+
+{% endblock %}
